@@ -1,3 +1,5 @@
 (executable
- (name simple_blog_unix)
+ (public_name risperss_blog)
+ (name risperss_blog)
+ (package risperss_blog)
  (libraries yocaml simple_blog yocaml_unix))
