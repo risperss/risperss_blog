@@ -12,6 +12,12 @@ bug-reports: "https://github.com/username/reponame/issues"
 depends: [
   "dune" {>= "3.19"}
   "ocaml"
+  "yocaml"
+  "yocaml_omd"
+  "yocaml_jingoo"
+  "yocaml_yaml"
+  "yocaml_syndication"
+  "yocaml_unix"
   "odoc" {with-doc}
 ]
 build: [

@@ -15,16 +15,16 @@
    along with this program.  If not, see <https://www.gnu.org/licenses/>. *)
 
 module Make_with_target (_ : sig
-  val source : Yocaml.Path.t
-  val target : Yocaml.Path.t
-end) : sig
+    val source : Yocaml.Path.t
+    val target : Yocaml.Path.t
+  end) : sig
   val target : Yocaml.Path.t
   val process_all : unit -> unit Yocaml.Eff.t
 end
 
 module Make (_ : sig
-  val source : Yocaml.Path.t
-end) : sig
+    val source : Yocaml.Path.t
+  end) : sig
   val target : Yocaml.Path.t
   val process_all : unit -> unit Yocaml.Eff.t
 end

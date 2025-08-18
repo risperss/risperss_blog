@@ -19,7 +19,7 @@
  (name risperss_blog)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml)
+ (depends ocaml yocaml yocaml_omd yocaml_jingoo yocaml_yaml yocaml_syndication yocaml_unix)
  (tags
   ("add topics" "to describe" your project)))
 

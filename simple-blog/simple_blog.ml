@@ -58,9 +58,9 @@ open Yocaml
 *)
 
 module Make_with_target (S : sig
-  val source : Path.t
-  val target : Path.t
-end) =
+    val source : Path.t
+    val target : Path.t
+  end) =
 struct
   (* Firstly, we're going to create resolvers to facilitate access to files and to
      describe the targets to which we want to create these files. Paths are
@@ -133,8 +133,7 @@ struct
     (* As we often process markdown files that we want to transform into html
        files, this function acts as a helper to quickly relocate a given file name
        in a given directory and change its extension to [.html]. *)
-    let as_html into file =
-      file |> Path.move ~into |> Path.change_extension "html"
+    let as_html into file = file |> Path.move ~into |> Path.change_extension "html"
   end
 
   (* Export the target for being used outside of the library. *)
@@ -146,8 +145,7 @@ struct
 
   (* As we just want to move the entire directory of our CSS style sheets, we
      don't need to bother, we can just copy the CSS directory into our target! *)
-  let process_css_files =
-    Action.copy_directory ~into:Target.target_root Source.css
+  let process_css_files = Action.copy_directory ~into:Target.target_root Source.css
 
   (* Now that we can handle CSS files, we will handle pages using the description
      of a generic page described in the Archetype module. Like for CSS files, we
@@ -172,7 +170,6 @@ struct
     (* Firstly, we calculate its new name using the [as_html] function, informing
        it that we will write the file to the root of our target. *)
     let file_target = Target.(as_html pages file) in
-
     (* Now, we can write the file using the [Static.write_file_with_metadata]
        action, which will execute a task. We use [Static.write_file_with_metadata]
        because in our example, constructing a page involves no dynamic dependencies.
@@ -180,47 +177,47 @@ struct
        The operators for composing tasks are found in the Task module, Hence its
        opening. *)
     let open Task in
-    Action.Static.write_file_with_metadata file_target
+    Action.Static.write_file_with_metadata
+      file_target
       ((* We add the binary to the dependencies because we assume that if the
           binary changes, we would want to replay the task. Building a task simply
           involves composing (often with [>>>]) smaller tasks, and it's these
           tasks that build a dependency tree. *)
        Pipeline.track_file Source.binary
-      (* Now we read the file and its metadata. We pass the module that describes
+       (* Now we read the file and its metadata. We pass the module that describes
          the expected metadata (Archetype.Page) to ensure validation, and this
          step will return a pair containing as the first element the metadata and
          as the second element the file content. *)
-      >>> Yocaml_yaml.Pipeline.read_file_with_metadata
-            (module Archetype.Page)
-            file
-      (* Now, we will transform the file content from Markdown to HTML. The
+       >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Page) file
+       (* Now, we will transform the file content from Markdown to HTML. The
          [content_to_html] function operates on the second element of the previous
          task. At this stage, we will still have a pair, except that the content
          of our file will have been converted from Markdown to HTML.*)
-      >>> Yocaml_omd.content_to_html ()
-      (* Now we can apply a template. Just as we read and validate metadata using
+       >>> Yocaml_omd.content_to_html ()
+       (* Now we can apply a template. Just as we read and validate metadata using
          the Archetype.Page module, we will use it to inject them into a Jingoo
          template. And we can use our utility function in Source to easily
          retrieve the template. At this stage, we will still have a pair, except
          that the content of our file will have been injected into a template. *)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Page)
-            (Source.template "page.html")
-      (* Now that our content has been injected into our page template, we can
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Page)
+             (Source.template "page.html")
+       (* Now that our content has been injected into our page template, we can
          insert this page into the template of the general layout. The idea is to
          apply the templates in cascade. (However, the order may depend on how the
          template is constructed). *)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Page)
-            (Source.template "layout.html"))
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Page)
+             (Source.template "layout.html"))
+  ;;
 
   (* Now that we can process a page, we can batch all our pages in the same way we
      proceeded to process CSS files, using [batch]. This time, we will also
      iterate only over files. However, we will only handle files with the [.md]
      extension to process only Markdown files. *)
   let process_pages =
-    Action.batch ~only:`Files ~where:(Path.has_extension "md") Source.pages
-      process_page
+    Action.batch ~only:`Files ~where:(Path.has_extension "md") Source.pages process_page
+  ;;
 
   (* Now, let's focus on articles. We will be much less verbose as we will quickly
      realize that, in broad strokes, it's quite similar to what we did for pages.
@@ -232,40 +229,43 @@ struct
     (* We start by calculating the filename where the article page will be
        constructed, just like for the pages. *)
     let file_target = Target.(as_html articles file) in
-
     (* As for Pages, we can write the file using the
        [Static.write_file_with_metadata] action,
        which will execute a task. We use [Static.write_file_with_metadata]
        because in our example, constructing a page involves no dynamic
        dependencies. *)
     let open Task in
-    Action.Static.write_file_with_metadata file_target
+    Action.Static.write_file_with_metadata
+      file_target
       ((* As for Pages, we want to track the binary.  *)
        Pipeline.track_file Source.binary
-      (* Just like with pages, we read the file and its metadata. This time we use
+       (* Just like with pages, we read the file and its metadata. This time we use
          the Article archetype, which exposes minimum fields to construct articles
          (a title, a synopsis, a date, etc.). The process is exactly the same as
          before, for pages. *)
-      >>> Yocaml_yaml.Pipeline.read_file_with_metadata
-            (module Archetype.Article)
-            file
-      (* We convert the Markdown content to HTML. *)
-      >>> Yocaml_omd.content_to_html_with_toc Archetype.Article.with_toc
-      (* We apply the cascade of templates starting with that of an article.*)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Article)
-            (Source.template "article.html")
-      (* We can apply the general template, which is possible because an Article
+       >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Article) file
+       (* We convert the Markdown content to HTML. *)
+       >>> Yocaml_omd.content_to_html_with_toc Archetype.Article.with_toc
+       (* We apply the cascade of templates starting with that of an article.*)
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Article)
+             (Source.template "article.html")
+       (* We can apply the general template, which is possible because an Article
          inherits from a page. *)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Article)
-            (Source.template "layout.html"))
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Article)
+             (Source.template "layout.html"))
+  ;;
 
   (* Now we can batch our article processing on all files with the [.md] extension
      in the directory of our articles, and that's it. *)
   let process_articles =
-    Action.batch ~only:`Files ~where:(Path.has_extension "md") Source.articles
+    Action.batch
+      ~only:`Files
+      ~where:(Path.has_extension "md")
+      Source.articles
       process_article
+  ;;
 
   (* Now we're going to build a slightly more complex page: the Index. This page
      differs from the previous ones in that it depends on the contents of a
@@ -278,7 +278,6 @@ struct
        It's not very different from what we did in previous actions.*)
     let file = Source.index in
     let file_target = Target.(as_html pages file) in
-
     let open Task in
     (* Next, you need to read all the articles in the [articles/] directory.
        Fortunately, the [Archetype.Articles] module provides a task (which acts on
@@ -300,16 +299,15 @@ struct
         ~compute_link:(Target.as_html @@ Path.abs [ "articles" ])
         Source.articles
     in
-
     (* Now that we have a task that allows us to process our metadata and read
        our articles, the rest of the pipeline is quite similar to what we were
        doing before. *)
-
     (* As for Pages and articles, we can write the file using the
        [Static.write_file_with_metadata] action, which will execute a task.
        We use [Static.write_file_with_metadata] because in our example, constructing
        the index involves no dynamic dependencies (because of a small trick). *)
-    Action.Static.write_file_with_metadata file_target
+    Action.Static.write_file_with_metadata
+      file_target
       ((* As for Pages, we want to track the binary. But we're also going to track
           the directory containing the articles. Normally, the processing of
           articles seems to be a dynamic dependency (because we would
@@ -321,28 +319,27 @@ struct
           children. This makes it possible to statically track all the articles,
           trivially speaking.*)
        Pipeline.track_files [ Source.binary; Source.articles ]
-      (* We read a file with its metadata, as our index is a regular page, we read
+       (* We read a file with its metadata, as our index is a regular page, we read
          it as if it were a page. *)
-      >>> Yocaml_yaml.Pipeline.read_file_with_metadata
-            (module Archetype.Page)
-            file
-      (* We convert the Markdown content to HTML. *)
-      >>> Yocaml_omd.content_to_html ()
-      (* And here, we want to modify our metadata, which is currently of type
+       >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Archetype.Page) file
+       (* We convert the Markdown content to HTML. *)
+       >>> Yocaml_omd.content_to_html ()
+       (* And here, we want to modify our metadata, which is currently of type
          [Page.t], to metadata of type [Articles.t] (to have the list of our
          articles). We will apply our task [compute_index] only to our metadata
          (thus to the first element of the pair that we maintain in our pipeline),
          using the function [first]: *)
-      >>> first compute_index
-      (* Now we can apply our cascade of templates. We start with the index
+       >>> first compute_index
+       (* Now we can apply our cascade of templates. We start with the index
          template *)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Articles)
-            (Source.template "index.html")
-      (* Then we apply the general template, just like in the previous examples *)
-      >>> Yocaml_jingoo.Pipeline.as_template
-            (module Archetype.Articles)
-            (Source.template "layout.html"))
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Articles)
+             (Source.template "index.html")
+       (* Then we apply the general template, just like in the previous examples *)
+       >>> Yocaml_jingoo.Pipeline.as_template
+             (module Archetype.Articles)
+             (Source.template "layout.html"))
+  ;;
 
   (* Now we're going to create the feeds. For the flex, we're going to create 3,
      Rss1, Rss2 and Atom (in real life, this isn't very useful :D).
@@ -374,6 +371,7 @@ struct
           ~where:(Path.has_extension "md")
           ~compute_link:(Target.as_html @@ Path.abs [ "articles" ])
           Source.articles
+  ;;
 
   (* Now we'll simply use the different arrows offered by the Yocaml_syndication
      plugin. Now we're simply going to use the different arrows offered by the
@@ -381,21 +379,31 @@ struct
 
   let rss1 =
     let open Task in
-    Action.Static.write_file Target.rss1
+    Action.Static.write_file
+      Target.rss1
       (fetch_articles
-      >>> Yocaml_syndication.Rss1.from_articles ~title:feed_title ~site_url
-            ~description:feed_description ~feed_url:"http://mysite.com/rss1.xml"
-            ())
+       >>> Yocaml_syndication.Rss1.from_articles
+             ~title:feed_title
+             ~site_url
+             ~description:feed_description
+             ~feed_url:"http://mysite.com/rss1.xml"
+             ())
+  ;;
 
   (* Now we can repeat the same process for Rss2. *)
 
   let rss2 =
     let open Task in
-    Action.Static.write_file Target.rss2
+    Action.Static.write_file
+      Target.rss2
       (fetch_articles
-      >>> Yocaml_syndication.Rss2.from_articles ~title:feed_title ~site_url
-            ~description:feed_description ~feed_url:"http://mysite.com/rss2.xml"
-            ())
+       >>> Yocaml_syndication.Rss2.from_articles
+             ~title:feed_title
+             ~site_url
+             ~description:feed_description
+             ~feed_url:"http://mysite.com/rss2.xml"
+             ())
+  ;;
 
   (* And finally Atom, which requires a little more plumbing (because it's a more
      flexible syndication format). *)
@@ -403,14 +411,19 @@ struct
   let atom =
     let open Task in
     let authors =
-      Yocaml.Nel.singleton
-      @@ Yocaml_syndication.Person.make "The YOCaml community group"
+      Yocaml.Nel.singleton @@ Yocaml_syndication.Person.make "The YOCaml community group"
     in
-    Action.Static.write_file Target.atom
+    Action.Static.write_file
+      Target.atom
       (fetch_articles
-      >>> Yocaml_syndication.Atom.(
-            from_articles ~site_url ~authors ~title:(text feed_title)
-              ~feed_url:"http://mysite.com/atom.xml" ()))
+       >>> Yocaml_syndication.Atom.(
+             from_articles
+               ~site_url
+               ~authors
+               ~title:(text feed_title)
+               ~feed_url:"http://mysite.com/atom.xml"
+               ()))
+  ;;
 
   (* Now, we can group all our processes together! Each Action (process_xxxx) is
      actually a function that takes a cache as an argument and returns an effect
@@ -443,13 +456,14 @@ struct
        to action, being updated. So, we can save our cache to be used in the next
        run of our generator! *)
     >>= Action.store_cache ~on:`Source Target.cache
+  ;;
 end
 
 module Make (S : sig
-  val source : Path.t
-end) =
+    val source : Path.t
+  end) =
 Make_with_target (struct
-  include S
+    include S
 
-  let target = Path.(source / "_build")
-end)
+    let target = Path.(source / "_build")
+  end)
