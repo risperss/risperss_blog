@@ -5,7 +5,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <!-- Display title (if it exists) -->
         <title>
-            YOCaml examples/simple-blog- Hello World</title>
+            risperss blog- Hello World</title>
         <!-- We iterate over the metatags calculated to display them --><meta name="description" content="A fun article about a riddle I liked, with solution." /><meta name="keywords" content="prisoner, switch" /><meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- We use Google font to load the typography, which is a bit sad,
          but it avoids making the repo code too long for an example. -->
@@ -22,10 +22,8 @@
     <body>
         <div class="layout">
             <header>
-                <h1 class="slab">A simple blog</h1>
-                <h2 class="slab">
-                    An example of a personal blog built with YOCaml
-                </h2>
+                <h1 class="slab">risperss blog</h1>
+                <h2 class="slab">My personal blog</h2>
                 <nav>
                     <ul>
                         <li><a href="/">Home</a></li>
@@ -130,7 +128,7 @@ The strategy they agree on is to designate one prisoner as the &quot;counter&quo
   - if they have _never_ before moved the state to the top positions, move the state to the top positions (by performing either D -&gt; A or C -&gt; D).
   - if they _have_ moved the state to the top positions, keep the state in the bottom positions (by performing either C -&gt; D or D -&gt; C).
 </code></pre>
-<p>The intuition here is that only an &quot;other&quot; who has never done so before may move the switch to the top position, so each time the counter sees this, he's certain a unique person has entered the room.</p>
+<p>The intuition here is that only an &quot;other&quot; who has never done so before may move the switch from the bottom to the top position, so each time the counter sees the state in the top position, he's certain a new unique person has entered the room.</p>
 <p>This assumes the switches start in the bottom positions. I'll think more about what it looks like for arbitrary start positions.</p>
 </details>
 </article>

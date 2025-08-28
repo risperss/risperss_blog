@@ -1,5 +1,5 @@
 ---
-page_title: An index
+page_title: Index
 description: Starts at zero
 tags: []
 ---
