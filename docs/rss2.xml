@@ -5,26 +5,15 @@
     <link>https://yocaml.example</link>
     <description><![CDATA[My personnal simple blog written using YOCaml]]></description>
     <atom:link href="http://mysite.com/rss2.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 29 Apr 2024 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 28 Aug 2025 00:00:00 GMT</lastBuildDate>
     <docs>https://www.rssboard.org/rss-specification</docs>
     <generator>YOCaml</generator>
     <item>
-      <title>A Journey into Functional Programming</title>
-      <link>https://yocaml.example/articles/joy-of-ocaml.html</link>
-      <description>
-        <![CDATA[Another bullshit article about OCaml. Maybe the article isn't wrong, I don't know, I haven't read it either. Arf.]]>
-      </description>
-      <guid isPermaLink="true">https://yocaml.example/articles/joy-of-ocaml.html</guid>
-      <pubDate>Mon, 29 Apr 2024 00:00:00 GMT</pubDate>
-    </item>
-    <item>
       <title>Hello World</title>
       <link>https://yocaml.example/articles/hello-world.html</link>
-      <description>
-        <![CDATA[A completely uninteresting article by chatGPT who thinks that YOCaml is the fusion of OCaml and Yaml. I'm not sure what the article is about, I haven't read it.]]>
-      </description>
+      <description><![CDATA[A fun article about a riddle I liked, with solution.]]></description>
       <guid isPermaLink="true">https://yocaml.example/articles/hello-world.html</guid>
-      <pubDate>Mon, 22 Apr 2024 00:00:00 GMT</pubDate>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

@@ -6,7 +6,7 @@
         <!-- Display title (if it exists) -->
         <title>
             YOCaml examples/simple-blog- Hello World</title>
-        <!-- We iterate over the metatags calculated to display them --><meta name="description" content="A completely uninteresting article by chatGPT who thinks that YOCaml is the fusion of OCaml and Yaml. I&apos;m not sure what the article is about, I haven&apos;t read it." /><meta name="keywords" content="bullshit, chatgpt, article, example" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- We iterate over the metatags calculated to display them --><meta name="description" content="A fun article about a riddle I liked, with solution." /><meta name="keywords" content="prisoner, switch" /><meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- We use Google font to load the typography, which is a bit sad,
          but it avoids making the repo code too long for an example. -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,57 +38,106 @@
                 </nav>
             </header>
             <main><div class="article-header">
-  <div>
-    <div class="mono date">
-      <div class="year">2024</div>
-      <div class="day">22</div>
-      <div class="month">apr</div>
+    <div>
+        <div class="mono date">
+            <div class="year">2025</div>
+            <div class="day">28</div>
+            <div class="month">aug</div>
+        </div>
     </div>
-  </div>
-  <div>
-    <h3 class="slab">Hello World</h3><div class="article-synopsis">A completely uninteresting article by chatGPT who thinks that YOCaml is the fusion of OCaml and Yaml. I&apos;m not sure what the article is about, I haven&apos;t read it.</div><ul class="mono tags"><li>bullshit</li><li>chatgpt</li><li>article</li><li>example</li></ul>
-  </div>
+    <div>
+        <h3 class="slab">Hello World</h3><div class="article-synopsis">A fun article about a riddle I liked, with solution.</div><ul class="mono tags"><li>prisoner</li><li>switch</li></ul>
+    </div>
 </div>
 
-<article><p>In the realm of programming languages, innovation often arises from the fusion of existing concepts. Enter YOCaml – a modern language that combines the power of OCaml with the simplicity of YAML. In this article, we'll delve into what YOCaml is, its unique features, and why it's gaining traction among developers.</p>
-<h2 id="what-is-yocaml">What is YOCaml?</h2>
-<p>YOCaml is a programming language that marries the functional programming prowess of OCaml with the human-readable syntax of YAML. Born out of a desire to streamline development workflows and enhance code readability, YOCaml offers a fresh approach to writing expressive and maintainable code.</p>
-<h2 id="key-features-of-yocaml">Key Features of YOCaml</h2>
-<h3 id="1-familiar-syntax">1. Familiar Syntax</h3>
-<p>YOCaml adopts the YAML syntax, known for its simplicity and readability. YAML's indentation-based structure makes code organization intuitive, allowing developers to focus on the logic rather than wrestling with syntax quirks.</p>
-<h3 id="2-functional-programming-paradigm">2. Functional Programming Paradigm</h3>
-<p>Building on OCaml's solid foundation, YOCaml embraces the functional programming paradigm. With first-class functions, pattern matching, and immutable data structures, developers can write concise and elegant code that is easy to reason about.</p>
-<h3 id="3-interoperability">3. Interoperability</h3>
-<p>YOCaml seamlessly integrates with existing OCaml codebases, enabling developers to leverage their expertise and reuse libraries. Whether you're migrating an existing project or exploring new possibilities, YOCaml offers a smooth transition path.</p>
-<h3 id="4-type-safety">4. Type Safety</h3>
-<p>Like its predecessor OCaml, YOCaml is statically typed, providing robust type checking at compile time. This ensures code correctness and helps catch errors early in the development process, leading to more reliable software.</p>
-<h2 id="getting-started-with-yocaml">Getting Started with YOCaml</h2>
-<p>Ready to dive into the world of YOCaml? Here's a quick guide to get you started:</p>
-<ol>
-<li><strong>Installation</strong>: Head over to the official YOCaml website to download and install the latest version of the compiler.
-</li>
-<li><strong>Write Your First YOCaml Program</strong>: Fire up your favorite text editor and create a <code>.yocaml</code> file. Start with a simple &quot;Hello, World!&quot; program to familiarize yourself with the syntax.
-</li>
-<li><strong>Explore Documentation and Tutorials</strong>: Dive into the official YOCaml documentation and community tutorials to deepen your understanding of the language and its ecosystem.
-</li>
-<li><strong>Join the Community</strong>: Connect with fellow YOCaml enthusiasts on forums, mailing lists, and social media channels. Share your experiences, ask questions, and contribute to the growing YOCaml community.
-</li>
-</ol>
-<h2 id="why-yocaml">Why YOCaml?</h2>
-<p>In a world where software development is becoming increasingly complex, YOCaml offers a refreshing approach. By combining the best of OCaml and YAML, YOCaml empowers developers to write clean, concise code without sacrificing expressiveness or performance. Whether you're building web applications, data pipelines, or anything in between, YOCaml has something to offer.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>YOCaml represents a new frontier in programming languages – one that prioritizes simplicity, expressiveness, and interoperability. With its familiar syntax, functional programming paradigm, and robust type system, YOCaml is poised to make waves in the developer community. So why not embark on this journey and see where YOCaml takes you?</p>
-<p>Happy coding!</p>
+<article><h2 id="the-riddle">The riddle</h2>
+<p>I found this riddle <a href="https://www.tcm.phy.cam.ac.uk/~sea31/puzzle.html">here</a>,
+which is a nice site containing lots of fun riddles. This article will go over
+problem 2, which in case that link breaks, is included below.</p>
+<blockquote>
+<p>24 convicts are being transported together to a special prison, in which they
+will spend the rest of their life, each in solitary confinement. However they
+know that they have one last chance of securing freedom if they solve the
+following puzzle: At random intervals (on average much shorter than the
+prisoner's lifespan!), a randomly selected prisoner will be led to a room which
+is completely bare and only contains two switches with two positions each. On
+every visit exactly one of the switches must be switched exactly once but the
+visiting prisoner is free to choose which one he wants to switch. When a
+prisoner can tell that all prisoners have been in this room at least once, all
+are set free. What strategy should they agree on before being separated upon
+arrival at the prison?</p>
+</blockquote>
+<h2 id="an-aside-about-this-page-blog">An aside about this page/blog</h2>
+<p>Feel free to give this riddle a try. I did not invent this riddle, nor do I know
+anything fundamental about this kind of problem that would allow me to provide
+some generalizible mathematical explanation. I just though of a solution and
+wanted to add collapsible hint and solution sections to articles in YOCaml
+without any JavaScript.</p>
+<p>As it turns out, including a <code>&lt;details&gt;</code> tag in Markdown does this automatically.
+So much for my side quest. All the below section took was this snippet of code.</p>
+<pre><code class="language-html">&lt;details&gt;
+    &lt;summary&gt;Collapse / Expand&lt;/summary&gt;
+    Foo bar
+&lt;/details&gt;
+</code></pre>
+<h3 id="a-simple-collapsible-section">A simple collapsible section</h3>
+<details>
+    <summary>Collapse / Expand</summary>
+    Foo bar
+</details>
+<h2 id="hints">Hints</h2>
+<p>If you are stuck on this riddle, here are some hints.</p>
+<details>
+    <summary>Hint #1</summary>
+    It might be useful to thing of the state of the switches as four nodes connected in a square,
+    like this.
+<pre><code>A ---- B
+|      |
+|      |
+D ---- C
+</code></pre>
+</details>
+<details>
+    <summary>Hint #2</summary>
+    A prisoner must be able to tell that all prisoners have been in this room at least once.
+    It does not specify how many must be able to tell.
+</details>
+<details>
+    <summary>Hint #3</summary>
+    The solution will work for an arbitrary number of prisoners. The number 24 is a red herring.
+</details>
+<h2 id="solution">Solution</h2>
+<p><a href="https://www.tcm.phy.cam.ac.uk/~sea31/sol2.htm">Here</a> is OP's solution, included below in case of broken links.</p>
+<details>
+    <summary>OP's Solution</summary>
+    Call the switches A and B (where the prisoners agree a way of distinguishing the switches unambiguously). One particular prisoner is designated to operate as follows: Every time he finds the A switch in the 'down' position he switches it 'up' and counts these occurrences. If he finds it in the 'up' position, he switches the B switch (regardless of its position). All others operate on the switches as follows: If they find switch A in the 'up' position, they switch it to 'down'. However, if they have already operated on switch A twice before in this manner, or if they find it 'down', they switch the other switch, B once (regardless of its position). When the one designated prisoner operating only on switch A has counted 47 occurrences of switch A being in the down position he knows that all have been in the room at least once.
+</details>
+<details>
+    <summary>My Solution</summary>
+<pre><code>A ---- B
+|      |
+|      |
+D ---- C
+
+We can imagine the switches as this graph. It has four distinct states, and only allows accessing two other states from a given state.
+For this explanation, let A and B may be called the top positions, and C and D may be called the bottom positions.
+
+The strategy they agree on is to designate one prisoner as the &quot;counter&quot; and all other prisoners as the &quot;others&quot;. Here are the rules they specify:
+- if the counter finds the state in the bottom positions, keep the state in the bottom positions (by performing either C -&gt; D or D -&gt; C).
+- if an other find the state in the top positions, keep the state in the top positions (by performing either A -&gt; B or B -&gt; A).
+- if the counter finds the state in the top positions, move the state to the bottom positions (by performing either A -&gt; D or B -&gt; C)
+- if the other finds the state in the bottom positions:
+  - if they have _never_ before moved the state to the top positions, move the state to the top positions (by performing either D -&gt; A or C -&gt; D).
+  - if they _have_ moved the state to the top positions, keep the state in the bottom positions (by performing either C -&gt; D or D -&gt; C).
+</code></pre>
+<p>The intuition here is that only an &quot;other&quot; who has never done so before may move the switch to the top position, so each time the counter sees this, he's certain a unique person has entered the room.</p>
+<p>This assumes the switches start in the bottom positions. I'll think more about what it looks like for arbitrary start positions.</p>
+</details>
 </article>
 </main>
             <footer>
-                This is an example blog, written using
-                <a href="https://github.com/xhtmlboi/yocaml">YOCaml</a>. You can
-                find the sources for this example
-                <a
-                    href="github.com/xhtmlboi/yocaml/tree/main/examples/simple-blog-unix"
-                    >here</a
-                >.
+                This blog is written using
+                <a href="https://github.com/xhtmlboi/yocaml">YOCaml</a>.
             </footer>
         </div>
     </body>

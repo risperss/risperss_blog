@@ -6,23 +6,13 @@
     <description><![CDATA[My personnal simple blog written using YOCaml]]></description>
     <items>
       <rdf:Seq>
-        <rdf:li resource="https://yocaml.example/articles/joy-of-ocaml.html"/>
         <rdf:li resource="https://yocaml.example/articles/hello-world.html"/>
       </rdf:Seq>
     </items>
   </channel>
-  <item rdf:about="https://yocaml.example/articles/joy-of-ocaml.html">
-    <title>A Journey into Functional Programming</title>
-    <link>https://yocaml.example/articles/joy-of-ocaml.html</link>
-    <description>
-      <![CDATA[Another bullshit article about OCaml. Maybe the article isn't wrong, I don't know, I haven't read it either. Arf.]]>
-    </description>
-  </item>
   <item rdf:about="https://yocaml.example/articles/hello-world.html">
     <title>Hello World</title>
     <link>https://yocaml.example/articles/hello-world.html</link>
-    <description>
-      <![CDATA[A completely uninteresting article by chatGPT who thinks that YOCaml is the fusion of OCaml and Yaml. I'm not sure what the article is about, I haven't read it.]]>
-    </description>
+    <description><![CDATA[A fun article about a riddle I liked, with solution.]]></description>
   </item>
 </rdf:RDF>

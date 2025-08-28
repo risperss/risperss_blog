@@ -1,52 +1,111 @@
 ---
 title: Hello World
-date: 2024/04/22
-synopsis: 
-  A completely uninteresting article by chatGPT who thinks that YOCaml is the 
-  fusion of OCaml and Yaml. I'm not sure what the article is about, 
-  I haven't read it.
-tags: [bullshit, chatgpt, article, example]
+date: 2025/08/28
+synopsis:
+  A fun article about a riddle I liked, with solution.
+tags: [prisoner, switch]
 ---
 
-In the realm of programming languages, innovation often arises from the fusion of existing concepts. Enter YOCaml – a modern language that combines the power of OCaml with the simplicity of YAML. In this article, we'll delve into what YOCaml is, its unique features, and why it's gaining traction among developers.
+## The riddle
 
-## What is YOCaml?
+I found this riddle [here](https://www.tcm.phy.cam.ac.uk/~sea31/puzzle.html),
+which is a nice site containing lots of fun riddles. This article will go over
+problem 2, which in case that link breaks, is included below.
 
-YOCaml is a programming language that marries the functional programming prowess of OCaml with the human-readable syntax of YAML. Born out of a desire to streamline development workflows and enhance code readability, YOCaml offers a fresh approach to writing expressive and maintainable code.
+> 24 convicts are being transported together to a special prison, in which they
+> will spend the rest of their life, each in solitary confinement. However they
+> know that they have one last chance of securing freedom if they solve the
+> following puzzle: At random intervals (on average much shorter than the
+> prisoner's lifespan!), a randomly selected prisoner will be led to a room which
+> is completely bare and only contains two switches with two positions each. On
+> every visit exactly one of the switches must be switched exactly once but the
+> visiting prisoner is free to choose which one he wants to switch. When a
+> prisoner can tell that all prisoners have been in this room at least once, all
+> are set free. What strategy should they agree on before being separated upon
+> arrival at the prison?
 
-## Key Features of YOCaml
+## An aside about this page/blog
 
-### 1. Familiar Syntax
+Feel free to give this riddle a try. I did not invent this riddle, nor do I know
+anything fundamental about this kind of problem that would allow me to provide
+some generalizible mathematical explanation. I just though of a solution and
+wanted to add collapsible hint and solution sections to articles in YOCaml
+without any JavaScript.
 
-YOCaml adopts the YAML syntax, known for its simplicity and readability. YAML's indentation-based structure makes code organization intuitive, allowing developers to focus on the logic rather than wrestling with syntax quirks.
+As it turns out, including a `<details>` tag in Markdown does this automatically.
+So much for my side quest. All the below section took was this snippet of code.
 
-### 2. Functional Programming Paradigm
+```html
+<details>
+    <summary>Collapse / Expand</summary>
+    Foo bar
+</details>
+```
 
-Building on OCaml's solid foundation, YOCaml embraces the functional programming paradigm. With first-class functions, pattern matching, and immutable data structures, developers can write concise and elegant code that is easy to reason about.
+### A simple collapsible section
 
-### 3. Interoperability
+<details>
+    <summary>Collapse / Expand</summary>
+    Foo bar
+</details>
 
-YOCaml seamlessly integrates with existing OCaml codebases, enabling developers to leverage their expertise and reuse libraries. Whether you're migrating an existing project or exploring new possibilities, YOCaml offers a smooth transition path.
+## Hints
 
-### 4. Type Safety
+If you are stuck on this riddle, here are some hints.
 
-Like its predecessor OCaml, YOCaml is statically typed, providing robust type checking at compile time. This ensures code correctness and helps catch errors early in the development process, leading to more reliable software.
+<details>
+    <summary>Hint #1</summary>
+    It might be useful to thing of the state of the switches as four nodes connected in a square,
+    like this.
 
-## Getting Started with YOCaml
+    A ---- B
+    |      |
+    |      |
+    D ---- C
+</details>
 
-Ready to dive into the world of YOCaml? Here's a quick guide to get you started:
+<details>
+    <summary>Hint #2</summary>
+    A prisoner must be able to tell that all prisoners have been in this room at least once.
+    It does not specify how many must be able to tell.
+</details>
 
-1. **Installation**: Head over to the official YOCaml website to download and install the latest version of the compiler.
-2. **Write Your First YOCaml Program**: Fire up your favorite text editor and create a `.yocaml` file. Start with a simple "Hello, World!" program to familiarize yourself with the syntax.
-3. **Explore Documentation and Tutorials**: Dive into the official YOCaml documentation and community tutorials to deepen your understanding of the language and its ecosystem.
-4. **Join the Community**: Connect with fellow YOCaml enthusiasts on forums, mailing lists, and social media channels. Share your experiences, ask questions, and contribute to the growing YOCaml community.
+<details>
+    <summary>Hint #3</summary>
+    The solution will work for an arbitrary number of prisoners. The number 24 is a red herring.
+</details>
 
-## Why YOCaml?
+## Solution
 
-In a world where software development is becoming increasingly complex, YOCaml offers a refreshing approach. By combining the best of OCaml and YAML, YOCaml empowers developers to write clean, concise code without sacrificing expressiveness or performance. Whether you're building web applications, data pipelines, or anything in between, YOCaml has something to offer.
+[Here](https://www.tcm.phy.cam.ac.uk/~sea31/sol2.htm) is OP's solution, included below in case of broken links.
 
-## Conclusion
+<details>
+    <summary>OP's Solution</summary>
+    Call the switches A and B (where the prisoners agree a way of distinguishing the switches unambiguously). One particular prisoner is designated to operate as follows: Every time he finds the A switch in the 'down' position he switches it 'up' and counts these occurrences. If he finds it in the 'up' position, he switches the B switch (regardless of its position). All others operate on the switches as follows: If they find switch A in the 'up' position, they switch it to 'down'. However, if they have already operated on switch A twice before in this manner, or if they find it 'down', they switch the other switch, B once (regardless of its position). When the one designated prisoner operating only on switch A has counted 47 occurrences of switch A being in the down position he knows that all have been in the room at least once.
+</details>
 
-YOCaml represents a new frontier in programming languages – one that prioritizes simplicity, expressiveness, and interoperability. With its familiar syntax, functional programming paradigm, and robust type system, YOCaml is poised to make waves in the developer community. So why not embark on this journey and see where YOCaml takes you?
+<details>
+    <summary>My Solution</summary>
 
-Happy coding!
+    A ---- B
+    |      |
+    |      |
+    D ---- C
+
+    We can imagine the switches as this graph. It has four distinct states, and only allows accessing two other states from a given state.
+    For this explanation, let A and B may be called the top positions, and C and D may be called the bottom positions.
+
+    The strategy they agree on is to designate one prisoner as the "counter" and all other prisoners as the "others". Here are the rules they specify:
+    - if the counter finds the state in the bottom positions, keep the state in the bottom positions (by performing either C -> D or D -> C).
+    - if an other find the state in the top positions, keep the state in the top positions (by performing either A -> B or B -> A).
+    - if the counter finds the state in the top positions, move the state to the bottom positions (by performing either A -> D or B -> C)
+    - if the other finds the state in the bottom positions:
+      - if they have _never_ before moved the state to the top positions, move the state to the top positions (by performing either D -> A or C -> D).
+      - if they _have_ moved the state to the top positions, keep the state in the bottom positions (by performing either C -> D or D -> C).
+
+
+  The intuition here is that only an "other" who has never done so before may move the switch from the bottom to the top position, so each time the counter sees the state in the top position, he's certain a new unique person has entered the room.
+
+  This assumes the switches start in the bottom positions. I'll think more about what it looks like for arbitrary start positions.
+
+</details>
