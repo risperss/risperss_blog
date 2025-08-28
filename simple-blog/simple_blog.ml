@@ -465,5 +465,5 @@ module Make (S : sig
 Make_with_target (struct
     include S
 
-    let target = Path.(source / "_build")
+    let target = Path.(source / "docs")
   end)

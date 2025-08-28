@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://mysite.com/atom.xml</id>
+  <title type="text">My simple blog</title>
+  <generator uri="https://github.com/xhtmlboi/yocaml" version="2">YOCaml</generator>
+  <updated>2024-04-29T00:00:00Z</updated>
+  <author>
+    <name>The YOCaml community group</name>
+  </author>
+  <link href="https://yocaml.example"/>
+  <link href="http://mysite.com/atom.xml" rel="self"/>
+  <entry>
+    <id>https://yocaml.example/articles/joy-of-ocaml.html</id>
+    <title type="text">A Journey into Functional Programming</title>
+    <updated>2024-04-29T00:00:00Z</updated>
+    <summary type="text">
+      Another bullshit article about OCaml. Maybe the article isn&apos;t wrong, I don&apos;t know, I haven&apos;t read it either. Arf.
+    </summary>
+    <link href="https://yocaml.example/articles/joy-of-ocaml.html" rel="alternate" title="A Journey into Functional Programming"/>
+    <category term="ocaml"/>
+    <category term="chatgpt"/>
+    <category term="functional"/>
+    <category term="programming"/>
+  </entry>
+  <entry>
+    <id>https://yocaml.example/articles/hello-world.html</id>
+    <title type="text">Hello World</title>
+    <updated>2024-04-22T00:00:00Z</updated>
+    <summary type="text">
+      A completely uninteresting article by chatGPT who thinks that YOCaml is the fusion of OCaml and Yaml. I&apos;m not sure what the article is about, I haven&apos;t read it.
+    </summary>
+    <link href="https://yocaml.example/articles/hello-world.html" rel="alternate" title="Hello World"/>
+    <category term="bullshit"/>
+    <category term="chatgpt"/>
+    <category term="article"/>
+    <category term="example"/>
+  </entry>
+</feed>

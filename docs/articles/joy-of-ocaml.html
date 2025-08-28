@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <!-- Display title (if it exists) -->
+        <title>
+            YOCaml examples/simple-blog- A Journey into Functional Programming</title>
+        <!-- We iterate over the metatags calculated to display them --><meta name="description" content="Another bullshit article about OCaml. Maybe the article isn&apos;t wrong, I don&apos;t know, I haven&apos;t read it either. Arf." /><meta name="keywords" content="ocaml, chatgpt, functional, programming" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- We use Google font to load the typography, which is a bit sad,
+         but it avoids making the repo code too long for an example. -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Specific CSS stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <div class="layout">
+            <header>
+                <h1 class="slab">A simple blog</h1>
+                <h2 class="slab">
+                    An example of a personal blog built with YOCaml
+                </h2>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/links.html">Links</a></li>
+                        <li><a class="feed" href="/rss1.xml">RSS1</a></li>
+                        <li><a class="feed" href="/rss2.xml">RSS2</a></li>
+                        <li><a class="feed" href="/atom.xml">ATOM</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main><div class="article-header">
+  <div>
+    <div class="mono date">
+      <div class="year">2024</div>
+      <div class="day">29</div>
+      <div class="month">apr</div>
+    </div>
+  </div>
+  <div>
+    <h3 class="slab">A Journey into Functional Programming</h3><div class="article-synopsis">Another bullshit article about OCaml. Maybe the article isn&apos;t wrong, I don&apos;t know, I haven&apos;t read it either. Arf.</div><ul class="mono tags"><li>ocaml</li><li>chatgpt</li><li>functional</li><li>programming</li></ul>
+  </div>
+</div>
+
+<article><p>In the vast landscape of programming languages, OCaml stands out as a powerful yet elegant choice for developers seeking expressive and efficient solutions. In this article, we'll embark on a journey to uncover the essence of OCaml – its origins, key features, and why it continues to captivate programmers worldwide.</p>
+<h2 id="origins-of-ocaml">Origins of OCaml</h2>
+<p>OCaml, short for Objective Caml, traces its roots back to the ML (Meta Language) family of programming languages developed in the 1970s. ML, with its strong emphasis on static typing and functional programming, laid the groundwork for OCaml's evolution.</p>
+<p>In the late 1990s, a team of researchers led by Xavier Leroy at INRIA (French Institute for Research in Computer Science and Automation) set out to enhance the ML language with support for object-oriented programming and imperative constructs. The result was OCaml – a versatile language that seamlessly blends functional and imperative paradigms.</p>
+<h2 id="key-features-of-ocaml">Key Features of OCaml</h2>
+<h3 id="1-strong-typing-system">1. Strong Typing System</h3>
+<p>OCaml boasts a powerful type system that ensures code correctness and safety at compile time. With static typing and type inference, OCaml catches many errors before runtime, leading to more robust and reliable software.</p>
+<h3 id="2-functional-programming-paradigm">2. Functional Programming Paradigm</h3>
+<p>At its core, OCaml embraces the functional programming paradigm. Functions are first-class citizens, enabling higher-order functions, currying, and powerful abstractions. Immutability is favored, encouraging a declarative and concise coding style.</p>
+<h3 id="3-pattern-matching">3. Pattern Matching</h3>
+<p>Pattern matching is a hallmark feature of OCaml, allowing developers to elegantly destructure data and match against patterns. From simple data types to complex algebraic data types, pattern matching simplifies control flow and enhances code readability.</p>
+<h3 id="4-polymorphism-and-modules">4. Polymorphism and Modules</h3>
+<p>OCaml supports parametric polymorphism through its powerful module system. With modules, developers can encapsulate data and functionality, fostering code reuse and modularity. The module system enables sophisticated abstractions and promotes scalable software design.</p>
+<h2 id="getting-started-with-ocaml">Getting Started with OCaml</h2>
+<p>Excited to explore OCaml? Here's a quick guide to kickstart your journey:</p>
+<ol>
+<li>
+<p><strong>Installation</strong>: Head over to the official OCaml website and download the compiler for your platform. Alternatively, consider using package managers like OPAM (OCaml Package Manager) for easy installation and dependency management.</p>
+</li>
+<li>
+<p><strong>Writing Your First OCaml Program</strong>: Fire up your favorite text editor and create a <code>.ml</code> file. Start with a simple &quot;Hello, World!&quot; program or dive into OCaml's rich ecosystem of libraries and frameworks.</p>
+</li>
+<li>
+<p><strong>Exploring Documentation and Tutorials</strong>: Dive into the official OCaml documentation, tutorials, and books to deepen your understanding of the language. Websites like Real World OCaml and OCamlverse offer valuable resources for beginners and seasoned developers alike.</p>
+</li>
+<li>
+<p><strong>Joining the Community</strong>: Connect with the vibrant OCaml community through forums, mailing lists, and social media channels. Engage with fellow developers, ask questions, and share your experiences as you embark on your OCaml journey.</p>
+</li>
+</ol>
+<h2 id="why-ocaml">Why OCaml?</h2>
+<p>In a world where software complexity is on the rise, OCaml shines as a beacon of simplicity, expressiveness, and reliability. Its rich type system, functional programming features, and elegant syntax make it a compelling choice for a wide range of applications – from web development to scientific computing.</p>
+<p>Whether you're a seasoned developer seeking new challenges or a curious newcomer eager to explore the world of functional programming, OCaml has something to offer. So why not embark on this journey and unlock the full potential of OCaml?</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>OCaml represents a convergence of tradition and innovation – a language rooted in decades of research and refinement, yet constantly evolving to meet the demands of modern software development. With its expressive syntax, powerful type system, and versatile ecosystem, OCaml continues to inspire and empower developers worldwide.</p>
+<p>So why wait? Dive into the world of OCaml and discover the joy of functional programming firsthand. Happy coding!</p>
+</article>
+</main>
+            <footer>
+                This is an example blog, written using
+                <a href="https://github.com/xhtmlboi/yocaml">YOCaml</a>. You can
+                find the sources for this example
+                <a
+                    href="github.com/xhtmlboi/yocaml/tree/main/examples/simple-blog-unix"
+                    >here</a
+                >.
+            </footer>
+        </div>
+    </body>
+</html>
